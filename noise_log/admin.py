@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from noise_log.models import NoiseLog
+
+admin.site.register(NoiseLog)

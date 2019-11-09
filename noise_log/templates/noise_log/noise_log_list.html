@@ -1,0 +1,37 @@
+{% load tz %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kuwa-Kuwi - Noise Log List</title>
+</head>
+<body>
+    {% if noise_logs %}
+        <h1>Noise Log</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Timestamp</th>
+                    <th>Decibel</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for noise in noise_logs %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>
+                        {% timezone "Asia/Jakarta" %}
+                            {{ noise.timestamp }}
+                        {% endtimezone %}
+                    </td>
+                    <td>{{ noise.decibel }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h2>NO NOISE RECORDED YET</h2>
+    {% endif %}
+</body>
+</html>
