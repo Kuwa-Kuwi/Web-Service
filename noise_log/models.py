@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+
+class NoiseLog(models.Model):
+    timestamp = models.DateTimeField()
+    decibel = models.DecimalField(max_digits=5, decimal_places=2)
