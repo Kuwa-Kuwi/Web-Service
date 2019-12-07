@@ -1,37 +1,29 @@
+{% load static %}
 {% load tz %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Kuwa-Kuwi - Noise Log List</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.dataTables.min.css' %}">
 </head>
 <body>
-    {% if noise_logs %}
-        <h1>Noise Log</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Number</th>
-                    <th>Timestamp</th>
-                    <th>Decibel</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for noise in noise_logs %}
-                <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td>
-                        {% timezone "Asia/Jakarta" %}
-                            {{ noise.timestamp }}
-                        {% endtimezone %}
-                    </td>
-                    <td>{{ noise.decibel }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <h2>NO NOISE RECORDED YET</h2>
-    {% endif %}
+    <h1 class="h1">NOISE LOG</h1>
+    <table id="noise-table" class="table table-striped table-responsive" style="width: 100%">
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Decibel</th>
+            </tr>
+        </thead>
+    </table>
+
+    <script src="{% static 'js/jquery-3.4.1.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/noise-log.js' %}"></script>
+    <script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'js/dataTables.bootstrap4.min.js' %}"></script>
 </body>
 </html>
